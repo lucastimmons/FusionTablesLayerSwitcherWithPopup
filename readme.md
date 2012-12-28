@@ -2,7 +2,7 @@
 Download
 --------
 
-[Fusion Tables Layer Swither with popup on map 1.0][dl] -- 28 Dec 2012
+[Fusion Tables Layer Switcher with popup on map 1.0][dl] -- 28 Dec 2012
 
 [dl]: https://github.com/lucastimmons/FusionTablesLayerSwitcherWithPopup/archive/master.zip
 
