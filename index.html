@@ -1,0 +1,73 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Layer switcher with on map popup</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+  <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+
+<script type="text/javascript">
+function initialize() {
+	var myLatLng = new google.maps.LatLng(10.75876, -85.37543);
+	
+	map = new google.maps.Map(document.getElementById('map_canvas'), {
+      center: myLatLng,
+      zoom: 11,
+	  panControl: false,
+  	zoomControl: true,
+	zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER
+    },
+  	mapTypeControl: false,
+      mapTypeId: 'roadmap'
+    }
+	);
+	
+	var tableid1 = '1-941Px73b_XWWn3pmPHKp6WhbbSVNiEmKMadwe0'	
+	layer1 = new google.maps.FusionTablesLayer(tableid1);
+	layer1.setQuery("SELECT latitude FROM " + tableid1);
+
+}
+
+function changeLayer(tableidselections) {
+
+	if (tableidselections == 1){
+		 if (document.getElementById("1").checked == true) {
+		   if(layer1.getMap() == null) 
+		   { 
+		   layer1.setMap(map);
+		   document.getElementById('showdiv').style.display ='block';
+		   
+		   }
+		 }
+	
+		 if (document.getElementById("1").checked == false) {
+			 layer1.setMap(null);
+			 document.getElementById('showdiv').style.display ='none';
+			 
+		 }
+	
+	}
+	
+}
+
+</script>
+
+
+<link href="style.css" rel="stylesheet" type="text/css">
+</head> 
+
+<body onLoad="initialize()"> 
+  <div id="map_canvas"></div>
+        <div id="legend"> 
+            <form>
+            <input type="checkbox" value="1" id="1" onClick="changeLayer(value);">click me
+			</form>
+		</div>
+
+<div id="showdiv">Here I am!</div>
+             
+</body> 
+</html> 
